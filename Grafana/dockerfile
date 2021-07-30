@@ -1,0 +1,3 @@
+FROM grafana/grafana:master
+LABEL maintainer="Criador Alan"
+LABEL description="Docker Grafana"

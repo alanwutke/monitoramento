@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  #Criação da imagem docker do Prometheus, utilizando o dockerfile com as configurações
+  prometheus:
+    # build: .
+    # dockerfile: dockerfile_prometheus
+    image: prom/prometheus:latest
+    restart: always
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+  #Criação da imagem docker do Grafana, utilizando o dockerfile com as configurações
+  grafana:
+    image: grafana/grafana
+    environment:
+      GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource"
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
