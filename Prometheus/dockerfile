@@ -1,0 +1,5 @@
+FROM prom/prometheus:latest
+LABEL maintainer="Criador Alan"
+LABEL description="Docker Prometheus"
+
+ADD prometheus.yml /etc/prometheus/
